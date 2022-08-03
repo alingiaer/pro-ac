@@ -1,0 +1,48 @@
+local u1 = false;
+delay(1, function()
+    if u1 == false then
+        script:Destroy();
+    end;
+end);
+local l__MainEvent__1 = game.ReplicatedStorage.MainEvent;
+local l__Character__2 = game.Players.LocalPlayer.Character;
+function crash()
+    u1 = true;
+    while true do
+    
+    end;
+end;
+function checkChild(p1)
+    local v3, v4, v5 = pairs(p1:GetChildren());
+    while true do
+        local v6, v7 = v3(v4, v5);
+        if v6 then
+
+        else
+            break;
+        end;
+        v5 = v6;
+        if v7.Name ~= "NA" then
+            if not v7:IsA("BodyPosition") then
+                if v7:IsA("BodyGyro") then
+                    u1 = true;
+                    delay(0.3, function()
+                        crash();
+                    end);
+                    game.ReplicatedStorage.MainEvent:FireServer("OneMoreTime", v7);
+                end;
+            else
+                u1 = true;
+                delay(0.3, function()
+                    crash();
+                end);
+                game.ReplicatedStorage.MainEvent:FireServer("OneMoreTime", v7);
+            end;
+        end;    
+    end;
+end;
+checkChild(l__Character__2.HumanoidRootPart);
+checkChild(l__Character__2.UpperTorso);
+if u1 == false then
+    script:Destroy();
+end;
